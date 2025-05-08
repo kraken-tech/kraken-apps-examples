@@ -1,0 +1,48 @@
+export default {
+  "token-missing": "Token nicht gefunden",
+  // Account app
+  "account-app.title": "CheerfulSpring-Backend-Dienst",
+  "account-app.subtitle":
+    "Diese App zeigt Daten vom CheerfulSpring-Backend-Dienst an",
+  "account-app.inputs.account-number.label": "Kontonummer",
+  "account-app.inputs.account-number.placeholder":
+    "Geben Sie eine Kontonummer ein, um zu beginnen",
+  "account-links.loyalty-scheme.title": "Treuepunkte-Auszeichnungen",
+  "account-links.loyalty-scheme.page-title": "Treuepunkte-Auszeichnungen für ",
+  "account-links.loyalty-scheme.cta": "Punkte für das Konto anzeigen",
+  "account-links.special-offers.title": "Sonderangebote",
+  "account-links.special-offers.page-title": "Sonderangebote für ",
+  "account-links.special-offers.cta": "Sonderangebote anzeigen",
+  "account-app.loyalty-scheme.labels.submitted-at": "Eingereicht am",
+  "account-app.loyalty-scheme.labels.prize-type": "Punktetyp",
+  "account-app.loyalty-scheme.labels.prize-value": "Punktewert",
+  "account-app.loyalty-scheme.labels.prize-amount": "Anzahl der Punkte",
+  "account-app.loyalty-scheme.no-awards-found": "Keine Auszeichnungen gefunden",
+  "account-links.special-offers.offer-names": "Angebotsnamen",
+  "account-links.special-offers.offer-details": "Angebotsdetails",
+  // Device info
+  "device-info.tabs.details": "Details",
+  "device-info.tabs.metrics": "Kennzahlen",
+  "device-info.tabs.admin": "Admin",
+  "device-info.tabs.details.labels.vehicle": "Fahrzeug",
+  "device-info.tabs.details.labels.charger": "Ladegerät",
+  "device-info.tabs.details.labels.capacity": "Kapazität",
+  "device-info.tabs.details.labels.registered-to": "Registriert auf",
+  "device-info.tabs.details.labels.charging-preferences":
+    "Ladeeinstellungen",
+  "device-info.tabs.details.labels.integration": "Integration",
+  "device-info.tabs.details.labels.make": "Hersteller",
+  "device-info.tabs.details.labels.model": "Modell",
+  "device-info.tabs.details.labels.battery-size": "Batteriegröße (kWh)",
+  "device-info.tabs.details.labels.max-charge-import": "Maximale Ladeleistung (kW)",
+  "device-info.tabs.details.labels.charger-power": "Ladeleistung (kW)",
+  "device-info.tabs.details.labels.target-time": "Zielzeit",
+  "device-info.tabs.details.labels.target-soc": "Ziel-SoC",
+  "device-info.tabs.metrics.chart.title": "EVSE-Ladeleistung",
+  "device-info.tabs.metrics.chart.legend.soc": "Ladezustand",
+  "device-info.tabs.metrics.chart.legend.power": "Leistung",
+  // Logging app
+  "logging-app.title": "Datadog-Ereignisse",
+  "logging-app.subtitle": "Hier sind einige häufige Ereignisse:",
+  "logging-app.account-subtitle": "Für Konto:",
+};
