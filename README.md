@@ -35,6 +35,49 @@ If you want to try out account tabs or device apps, edit `src/main.jsx`
 (it contains commented-out code for the different types of apps)
 and update the `index.html` file to match.
 
+## Making network requests
+
+Your Kraken app will be embedded within an iframe with a 
+[content security policy](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html#detailed-csp-directives)
+set to only `connect-src` via the Kraken App Proxy. This means all outbound 
+network requests you make from your app must include some additional data.
+
+The Kraken App Proxy expects the following headers to be set:
+
+* X-Kraken-App-Proxy-Destination: The destination URL you want to connect to.
+* X-Kraken-App-Proxy-Authorization: The JWT token provided via the `init` functions (APIProxyURL)
+
+The proxy has a single endpoint which is used to forward all requests. The URL
+will take the form of:
+
+```javascript
+// The endpoint in your system
+const myEndpoint = "/external/endpoint/"
+// The full proxy URL
+const proxyUrl = `${APIProxyURL}/p/v1/${appSlug}/${myEndpoint}`;
+
+// So your fully qualified URL will look like this
+// https://kraken-app-proxy.example.com/p/v1/example-app/external/endpoint/
+```
+
+When making requests, you can use the `fetch` API to include the appropriate 
+headers:
+
+```javascript
+// Make a request to external.com/api via the proxy
+const response = await fetch(proxyUrl, {
+  method: "POST",
+  headers: {
+    "X-Kraken-App-Proxy-Destination": "external.com/api",
+    "X-Kraken-App-Proxy-Authorization": `Bearer ${appProxyJwt}`,
+  },
+  body: JSON.stringify({ data: "example" }),
+});
+```
+
+The JWT you provide will be validated against the keyset provided within your 
+Kraken.
+
 ## Deploying an example app to your Kraken
 
 ### Prerequisites
