@@ -77,6 +77,32 @@ number of the account where the App is loaded.
 Device apps will receive `deviceID`, which is the ID of the device the user
 selected.
 
+### The Kraken Apps JWT
+
+Kraken Apps are provided a JWT token when they are initialised in Kraken.
+The token contains information about the user, and is the proof that requests
+reaching your service are coming from users logged into Kraken.
+
+You should include the JWT token as a header in all requests you make to the
+Kraken App Store Proxy. It will verify that it's valid, and forward it to your
+service.
+
+In your service, you can decrypt the JWT token to get information about the 
+user.
+In order to decode the token, you will need the public key of the Kraken the
+request originated from. Each Kraken publishes its public key in the
+`/.well-known/jwks.json` endpoint, both in its Supportsite domain, and its APIs.
+The public key has `kid` set to `kraken-app-store`.
+
+The JWT contains the following information:
+- `user_id`: the ID of the Support User in Kraken who made the request via 
+  the App
+- `user_email`: the email address of the Support User
+- `iat`: the time the token was issued
+- `exp`: the time the token expires (25 hours after it was issued)
+- `aud`: the name of the app where the request came from
+- (soon) `permissions`: the Kraken App specific permissions the user has
+
 ## Deploying an example app to your Kraken
 
 ### Prerequisites
