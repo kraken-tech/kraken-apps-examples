@@ -21,6 +21,7 @@ window.krakensupport = window.krakensupport || {};
     isLoginRequired,
     linkBaseRoute,
     appProxyJwt,
+    user: { id, email, firstName, lastName },
   }) => {
     const root = document.getElementById(rootID);
 
@@ -49,10 +50,11 @@ window.krakensupport = window.krakensupport || {};
     rootID,
     appSlug,
     basename,
-    accountNumber,
-    deviceID,
     APIProxyURL,
     appProxyJwt,
+    user: { id, email, firstName, lastName },
+    accountNumber,
+    deviceID,
   }) => {
     const root = document.getElementById(rootID);
 
@@ -75,11 +77,12 @@ window.krakensupport = window.krakensupport || {};
   o.initAccountApp = ({
     defaultLanguage,
     rootID,
-    accountNumber,
     basename,
     appSlug,
     APIProxyURL,
     appProxyJwt,
+    user: { id, email, firstName, lastName },
+    accountNumber,
   }) => {
     const root = document.getElementById(rootID);
 

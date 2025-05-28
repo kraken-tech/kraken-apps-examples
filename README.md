@@ -35,6 +35,48 @@ If you want to try out account tabs or device apps, edit `src/main.jsx`
 (it contains commented-out code for the different types of apps)
 and update the `index.html` file to match.
 
+## How Kraken Apps work
+
+### Apps placements, initialisation, and arguments
+
+Your Apps are added to Kraken's Supportsite in different locations, according
+to the placement you choose when creating the app.
+
+- **Full-page apps** are added to the Kraken's Supportsite as a new page.
+  This is the default type of app created by this example.
+- **Account Tab apps** are added to the Kraken's Supportsite as a new tab
+  in the account page.
+- **Account Device apps** are added to the Kraken's Supportsite as a new tab
+  in the device page.
+
+Depending on their placement, Kraken will expect your app bundle to provide
+some functions for it to call. These functions should be provided on a 
+`krakensupport` object on the `window`, and will be called by Kraken when the
+app is loaded - you can see an example of how to define this in `src/main.jsx`.
+
+Depending on the placement of the app, they may receive different arguments on
+initialisation.  All apps are passed these arguments:
+- `rootID`: the ID of the element on the page where your App should mount 
+  itself.
+- `appSlug`: the slug of the app. This is the slugified name of the app.
+- `basename`: the relative URL path where your app is mounted e.g `/client-app/my-app`
+- `APIProxyURL`: the URL of the Kraken API proxy. This is the URL your 
+  application will be able to make network requests to.
+- `appProxyJwt`: the JWT token that your app can use to authenticate
+  itself with the Kraken API proxy, and which will be forwarded to your backend.
+- `defaultLanguage`: the language the user is using in Kraken.
+- `user`: an object, containing:
+  - `id`: the Kraken ID of the user.
+  - `email`: the email address of the user in Kraken.
+  - `firstName`: the first name of the user.
+  - `lastName`: the last name of the user.
+
+On top of that, account apps will also receive `accountNumber`, which is the
+number of the account where the App is loaded.
+
+Device apps will receive `deviceID`, which is the ID of the device the user
+selected.
+
 ## Deploying an example app to your Kraken
 
 ### Prerequisites
