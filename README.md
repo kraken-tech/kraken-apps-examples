@@ -7,6 +7,9 @@ and trying out an application locally and installing it in your Kraken.
 It starts by creating a full-page application but contains code for trying out
 account and device apps as well.
 
+This example and your apps use Tako, Kraken's own Design System and component library. Tako is installed as a Node dependency in package.json and **requires an access token** since it is fetched from Kraken's private NPM registry. To have a token generated for you, please email us at [tako@kraken.tech](mailto:tako@kraken.tech).
+For more information on Tako, [click here](https://tako.kraken.tech/).
+
 ## To run the project locally
 
 - Check you're running a version of Node that matches the version in .nvmrc
