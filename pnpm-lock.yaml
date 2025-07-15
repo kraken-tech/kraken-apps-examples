@@ -20,9 +20,6 @@ dependencies:
   '@fortawesome/react-fontawesome':
     specifier: ^0.2.2
     version: 0.2.2(@fortawesome/fontawesome-svg-core@6.7.2)(react@18.3.1)
-  '@krakentech/icons':
-    specifier: ^2.8.0
-    version: 2.8.0(@types/react-dom@18.3.5)(@types/react@18.3.18)(react-dom@18.3.1)(react@18.3.1)(styled-components@5.3.11)
   '@krakentech/tako':
     specifier: ^23.2.0
     version: 23.2.0(@types/react@18.3.18)(react-dom@18.3.1)(react-responsive@9.0.2)(react@18.3.1)(styled-components@5.3.11)
@@ -801,22 +798,6 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  /@krakentech/icons@2.8.0(@types/react-dom@18.3.5)(@types/react@18.3.18)(react-dom@18.3.1)(react@18.3.1)(styled-components@5.3.11):
-    resolution: {integrity: sha512-JUqKmSacadJ0A33nfPlJIs0a6gX7DNKPRHcBMU6RyrXhsBfTG5xZeISWiEklRFY9uWZGxSWemozyBjhiD2s7LA==}
-    peerDependencies:
-      '@types/react': ^18.2.0
-      '@types/react-dom': ^18.2.0
-      react: ^18.0.0
-      react-dom: ^18.0.0
-      styled-components: 5.3.11
-    dependencies:
-      '@types/react': 18.3.18
-      '@types/react-dom': 18.3.5(@types/react@18.3.18)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      styled-components: 5.3.11(@babel/core@7.26.0)(react-dom@18.3.1)(react-is@16.13.1)(react@18.3.1)
-    dev: false
-
   /@krakentech/tako@23.2.0(@types/react@18.3.18)(react-dom@18.3.1)(react-responsive@9.0.2)(react@18.3.1)(styled-components@5.3.11):
     resolution: {integrity: sha512-r0SwepzzoFMghtZo1xSPt/3hB4E0pyFPq9SI+FjCl+TLP1AjN+7T+Kzebq3r9OSYxVn5LqmLdqtLi839+07W+g==}
     peerDependencies:
@@ -1072,6 +1053,7 @@ packages:
       '@types/react': ^18.0.0
     dependencies:
       '@types/react': 18.3.18
+    dev: true
 
   /@types/react-modal@3.16.3:
     resolution: {integrity: sha512-xXuGavyEGaFQDgBv4UVm8/ZsG+qxeQ7f77yNrW3n+1J6XAstUy5rYHeIHPh1KzsGc6IkCIdu6lQ2xWzu1jBTLg==}
