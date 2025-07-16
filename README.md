@@ -7,6 +7,9 @@ and trying out an application locally and installing it in your Kraken.
 It starts by creating a full-page application but contains code for trying out
 account and device apps as well.
 
+This example and your apps use Tako, Kraken's own Design System and component library. Tako is installed as a Node dependency in package.json and **requires an access token** since it is fetched from Kraken's private NPM registry. To have a token generated for you, please email us at [tako@kraken.tech](mailto:tako@kraken.tech).
+For more information on Tako, [click here](https://tako.kraken.tech/).
+
 ## To run the project locally
 
 - Check you're running a version of Node that matches the version in .nvmrc
@@ -50,17 +53,18 @@ to the placement you choose when creating the app.
   in the device page.
 
 Depending on their placement, Kraken will expect your app bundle to provide
-some functions for it to call. These functions should be provided on a 
+some functions for it to call. These functions should be provided on a
 `krakensupport` object on the `window`, and will be called by Kraken when the
 app is loaded - you can see an example of how to define this in `src/main.jsx`.
 
 Depending on the placement of the app, they may receive different arguments on
-initialisation.  All apps are passed these arguments:
-- `rootID`: the ID of the element on the page where your App should mount 
+initialisation. All apps are passed these arguments:
+
+- `rootID`: the ID of the element on the page where your App should mount
   itself.
 - `appSlug`: the slug of the app. This is the slugified name of the app.
 - `basename`: the relative URL path where your app is mounted e.g `/client-app/my-app`
-- `APIProxyURL`: the URL of the Kraken API proxy. This is the URL your 
+- `APIProxyURL`: the URL of the Kraken API proxy. This is the URL your
   application will be able to make network requests to.
 - `appProxyJwt`: the JWT token that your app can use to authenticate
   itself with the Kraken API proxy, and which will be forwarded to your backend.
@@ -87,7 +91,7 @@ You should include the JWT token as a header in all requests you make to the
 Kraken App Store Proxy. It will verify that it's valid, and forward it to your
 service.
 
-In your service, you can decrypt the JWT token to get information about the 
+In your service, you can decrypt the JWT token to get information about the
 user.
 In order to decode the token, you will need the public key of the Kraken the
 request originated from. Each Kraken publishes its public key in the
@@ -95,7 +99,8 @@ request originated from. Each Kraken publishes its public key in the
 The public key has `kid` set to `kraken-app-store`.
 
 The JWT contains the following information:
-- `user_id`: the ID of the Support User in Kraken who made the request via 
+
+- `user_id`: the ID of the Support User in Kraken who made the request via
   the App
 - `user_email`: the email address of the Support User
 - `iat`: the time the token was issued
@@ -105,22 +110,22 @@ The JWT contains the following information:
 
 ## Making network requests
 
-Your Kraken app will be embedded within an iframe with a 
+Your Kraken app will be embedded within an iframe with a
 [content security policy](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html#detailed-csp-directives)
-set to only `connect-src` via the Kraken App Proxy. 
+set to only `connect-src` via the Kraken App Proxy.
 
-To make requests via this proxy you must include some additional 
+To make requests via this proxy you must include some additional
 headers in your requests:
 
-* X-Kraken-App-Proxy-Destination: The destination URL you want to connect to.
-* X-Kraken-App-Proxy-Authorization: The JWT token provided via the `init` functions (appProxyJwt)
+- X-Kraken-App-Proxy-Destination: The destination URL you want to connect to.
+- X-Kraken-App-Proxy-Authorization: The JWT token provided via the `init` functions (appProxyJwt)
 
 The proxy has a single endpoint which is used to forward all requests. The URL
 will take the form of:
 
 ```javascript
 // The endpoint in your system
-const myEndpoint = "external/endpoint/"
+const myEndpoint = "external/endpoint/";
 // The full proxy URL
 const proxyUrl = `${APIProxyURL}/${myEndpoint}`;
 
@@ -128,7 +133,7 @@ const proxyUrl = `${APIProxyURL}/${myEndpoint}`;
 // https://kraken-app-proxy.example.com/p/v1/example-app/external/endpoint/
 ```
 
-When making requests, you can use the `fetch` API to include the appropriate 
+When making requests, you can use the `fetch` API to include the appropriate
 headers:
 
 ```javascript
@@ -143,7 +148,7 @@ const response = await fetch(proxyUrl, {
 });
 ```
 
-The JWT you provide will be validated against the keyset provided within your 
+The JWT you provide will be validated against the keyset provided within your
 Kraken.
 
 ## Deploying an example app to your Kraken
