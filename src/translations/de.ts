@@ -28,13 +28,13 @@ export default {
   "device-info.tabs.details.labels.charger": "Ladegerät",
   "device-info.tabs.details.labels.capacity": "Kapazität",
   "device-info.tabs.details.labels.registered-to": "Registriert auf",
-  "device-info.tabs.details.labels.charging-preferences":
-    "Ladeeinstellungen",
+  "device-info.tabs.details.labels.charging-preferences": "Ladeeinstellungen",
   "device-info.tabs.details.labels.integration": "Integration",
   "device-info.tabs.details.labels.make": "Hersteller",
   "device-info.tabs.details.labels.model": "Modell",
   "device-info.tabs.details.labels.battery-size": "Batteriegröße (kWh)",
-  "device-info.tabs.details.labels.max-charge-import": "Maximale Ladeleistung (kW)",
+  "device-info.tabs.details.labels.max-charge-import":
+    "Maximale Ladeleistung (kW)",
   "device-info.tabs.details.labels.charger-power": "Ladeleistung (kW)",
   "device-info.tabs.details.labels.target-time": "Zielzeit",
   "device-info.tabs.details.labels.target-soc": "Ziel-SoC",

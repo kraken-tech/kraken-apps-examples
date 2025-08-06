@@ -1,9 +1,6 @@
 import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
-import {
-  Breadcrumbs as TakoBreadcrumbs,
-  Card,
-} from "@krakentech/tako";
+import { Breadcrumbs as TakoBreadcrumbs, Card } from "@krakentech/tako";
 import React from "react";
 
 import { useConfig } from "../../../../components/Providers/Config";

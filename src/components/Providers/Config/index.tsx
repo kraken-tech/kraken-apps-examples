@@ -3,9 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { AppConfig } from "../../../types/app";
 
-const ConfigProviderContext = createContext<AppConfig | null>(
-  null
-);
+const ConfigProviderContext = createContext<AppConfig | null>(null);
 
 export const useConfig = () => {
   const context = useContext(ConfigProviderContext);
@@ -26,7 +24,6 @@ export const ConfigProvider = ({
 }) => {
   const { i18n } = useTranslation();
   i18n.changeLanguage(config.defaultLanguage);
-
 
   return (
     <ConfigProviderContext.Provider

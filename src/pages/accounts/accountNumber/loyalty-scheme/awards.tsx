@@ -14,7 +14,7 @@ import {
 import { format } from "date-fns";
 import { Layout } from "../../../../components";
 import { useTranslation } from "react-i18next";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 type AwardsData =
   | {
@@ -103,38 +103,36 @@ export const Page = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setAwardsData(
-      [
-        {
-          "type": "LOYALTY_POINTS",
-          "awardedAt": "2025-01-01T00:00:00Z",
-          "reference": "REFERRAL",
-          "value": {
-            "display": "Referral reward",
-            "amount": 1000
-          }
+    setAwardsData([
+      {
+        type: "LOYALTY_POINTS",
+        awardedAt: "2025-01-01T00:00:00Z",
+        reference: "REFERRAL",
+        value: {
+          display: "Referral reward",
+          amount: 1000,
         },
-        {
-          "type": "LOYALTY_POINTS",
-          "awardedAt": "2024-12-11T00:00:00Z",
-          "reference": "REFERRAL",
-          "value": {
-            "display": "Referral reward",
-            "amount": 1000
-          }
+      },
+      {
+        type: "LOYALTY_POINTS",
+        awardedAt: "2024-12-11T00:00:00Z",
+        reference: "REFERRAL",
+        value: {
+          display: "Referral reward",
+          amount: 1000,
         },
-        {
-          "type": "LOYALTY_POINTS",
-          "awardedAt": "2024-12-01T00:00:00Z",
-          "reference": "JOINING_BONUS",
-          "value": {
-            "display": "Joining bonus",
-            "amount": 2500
-          }
-        }
-      ]
-    )
-    setLoading(false)
+      },
+      {
+        type: "LOYALTY_POINTS",
+        awardedAt: "2024-12-01T00:00:00Z",
+        reference: "JOINING_BONUS",
+        value: {
+          display: "Joining bonus",
+          amount: 2500,
+        },
+      },
+    ]);
+    setLoading(false);
 
     // Example fetch via the proxy
     // --------------------------
@@ -180,7 +178,7 @@ export const Page = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
-    console.log('awardsData', awardsData)
+  console.log("awardsData", awardsData);
 
   return (
     <Layout
@@ -189,9 +187,7 @@ export const Page = () => {
     >
       <Card padding="none">
         {awardsData && awardsData.length > 0 ? (
-          <AwardsTable
-            data={awardsData}
-          />
+          <AwardsTable data={awardsData} />
         ) : (
           <p>{t("account-app.loyalty-scheme.no-awards-found")} </p>
         )}
