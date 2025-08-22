@@ -31,6 +31,14 @@ export const DebugApp = ({ props }: { props: any }) => {
         These are your user's details:
         <pre>{JSON.stringify(props.user, null, 2)}</pre>
       </p>
+      <p>
+        {/* We break up the token every 100 chars to avoid a reeeeeeaally long line */}
+        Your JWT is <pre>{props.appProxyJwt.match(/.{1,100}/g).join("\n")}</pre>
+      </p>
+      <p>
+        These are the environment variables passed to the app:
+        <pre>{JSON.stringify(props.environmentVariables, null, 2)}</pre>
+      </p>
       <p>All props have been logged to the console!</p>
     </>
   );
