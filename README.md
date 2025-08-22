@@ -200,7 +200,11 @@ app by default), you should see a button that will take you to the app's page.
 Because you're pointing to localhost, it will only work for you.
 
 Note that you will need to rebuild and update the url again to pick up further
-changes of the deployed application. Locally, Vite will hot-reload your code.
+changes of the deployed application.
+
+You can use `pnpm build:local` to make this process simpler. This command uses
+`nodemon` to start the development server to serve the built file, as well as
+rebuild the asset on file changes.
 
 ### How do I try different example apps?
 
