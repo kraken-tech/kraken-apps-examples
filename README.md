@@ -222,3 +222,15 @@ When we merge changes to an example app, we have to update the reference to the
 code manually in any Krakens that are using it. This ensures that browsers don't
 cache the old version of the app, as it can lead to confusing experiences
 for both users and developers supporting those apps.
+
+
+## The Debug App
+
+We have a created a little Kraken App in `src/components/DebugApp.ts` that can
+be useful to understand how Apps work in general. It will display
+information about where it's rendered, what the iframe URL is, and some of the
+arguments passed to the app initialisation function, including your user details
+and permissions.
+
+You can use the app as is, or copy the component into your application to 
+better understand the context in which it's running.
