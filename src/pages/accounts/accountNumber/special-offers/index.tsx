@@ -21,8 +21,12 @@ const SpecialOffers = () => {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHeaderCell>{t('account-links.special-offers.offer-names')}</TableHeaderCell>
-          <TableHeaderCell>{t('account-links.special-offers.offer-details')}</TableHeaderCell>
+          <TableHeaderCell>
+            {t("account-links.special-offers.offer-names")}
+          </TableHeaderCell>
+          <TableHeaderCell>
+            {t("account-links.special-offers.offer-details")}
+          </TableHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>

@@ -18,13 +18,13 @@ export const Layout = ({
   // @ts-ignore
   const shouldEnforceTokenCheck = import.meta.env.VITE_ENFORCE_TOKEN_CHECK;
   if (isLoginRequired && shouldEnforceTokenCheck) {
-      const sessionToken = getCookie("localTestingSessionCookie");
-      const isMissingToken = !sessionToken;
-      // This just hides the pages when the app is deployed to the internet, since
-      // it's open to the public
-      if (isMissingToken) {
-        return <Typography>{t("token-missing")}</Typography>;
-      }
+    const sessionToken = getCookie("localTestingSessionCookie");
+    const isMissingToken = !sessionToken;
+    // This just hides the pages when the app is deployed to the internet, since
+    // it's open to the public
+    if (isMissingToken) {
+      return <Typography>{t("token-missing")}</Typography>;
+    }
   }
 
   return (

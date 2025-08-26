@@ -1,29 +1,51 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router";
+import { AccountApp, DeviceInfo } from "./components";
+import { DebugApp } from "./components/DebugApp.tsx";
 
 import { CoreProvider } from "./components/Providers";
 import "./i18n";
 
-import { AppRoutes, BaseRoutes } from "./routes";
-import { AccountApp, DeviceInfo, Logging } from "./components";
+import { BaseRoutes } from "./routes";
 
 window.krakensupport = window.krakensupport || {};
 
 // here we attach different functions to the krakensupport object - one for each kind of app placement
 // This means we have a consistent interface for people to integrate with, with predictable arguments they can use
 (function (o) {
-  o.initSinglePageApp = ({
-    defaultLanguage,
-    rootID,
-    appSlug,
-    basename,
-    APIProxyURL,
-    isLoginRequired,
-    linkBaseRoute,
-    appProxyJwt,
-    user: { id, email, firstName, lastName },
-  }) => {
+  o.initSinglePageApp = (props) => {
+    const {
+      defaultLanguage,
+      rootID,
+      appSlug,
+      basename,
+      APIProxyURL,
+      isLoginRequired,
+      linkBaseRoute,
+      appProxyJwt,
+    } = props;
     const root = document.getElementById(rootID);
+
+    if (appSlug === "debug-app") {
+      ReactDOM.createRoot(root).render(
+        <CoreProvider
+          config={{
+            defaultLanguage,
+            basename,
+            APIProxyURL,
+            appProxyJwt,
+            linkBaseRoute,
+          }}
+        >
+          <BrowserRouter basename={basename}>
+            <Routes>
+              <Route index element={<DebugApp props={props} />} />
+            </Routes>
+          </BrowserRouter>
+        </CoreProvider>
+      );
+      return;
+    }
 
     // Example single page app
     // -----------------------
@@ -40,6 +62,7 @@ window.krakensupport = window.krakensupport || {};
       >
         <BrowserRouter basename={basename}>
           <BaseRoutes />
+          <DebugApp props={props} />
         </BrowserRouter>
       </CoreProvider>
     );
@@ -48,11 +71,9 @@ window.krakensupport = window.krakensupport || {};
   o.initAccountDeviceApp = ({
     defaultLanguage,
     rootID,
-    appSlug,
     basename,
     APIProxyURL,
     appProxyJwt,
-    user: { id, email, firstName, lastName },
     accountNumber,
     deviceID,
   }) => {
@@ -60,47 +81,47 @@ window.krakensupport = window.krakensupport || {};
 
     // Example account device app
     // --------------------------
-    // ReactDOM.createRoot(root).render(
-    //   <CoreProvider
-    //     config={{
-    //       defaultLanguage,
-    //       basename,
-    //       APIProxyURL,
-    //       appProxyJwt
-    //     }}
-    //   >
-    //     <DeviceInfo accountNumber={accountNumber} deviceId={deviceID} />
-    //   </CoreProvider>
-    // );
+    ReactDOM.createRoot(root).render(
+      <CoreProvider
+        config={{
+          defaultLanguage,
+          basename,
+          APIProxyURL,
+          appProxyJwt,
+        }}
+      >
+        <DeviceInfo accountNumber={accountNumber} deviceId={deviceID} />
+      </CoreProvider>
+    );
   };
 
-  o.initAccountApp = ({
-    defaultLanguage,
-    rootID,
-    basename,
-    appSlug,
-    APIProxyURL,
-    appProxyJwt,
-    user: { id, email, firstName, lastName },
-    accountNumber,
-  }) => {
+  o.initAccountApp = (props) => {
+    const {
+      defaultLanguage,
+      rootID,
+      basename,
+      APIProxyURL,
+      appProxyJwt,
+      accountNumber,
+    } = props;
     const root = document.getElementById(rootID);
 
     // Example account app
     // -------------------
-    // ReactDOM.createRoot(root).render(
-    //   <CoreProvider
-    //     config={{
-    //       defaultLanguage,
-    //       basename,
-    //       APIProxyURL,
-    //       appProxyJwt
-    //   }}
-    //   >
-    //     <BrowserRouter basename={basename}>
-    //       <AccountApp accountNumber={accountNumber} />
-    //     </BrowserRouter>
-    //   </CoreProvider>
-    // );
+    ReactDOM.createRoot(root).render(
+      <CoreProvider
+        config={{
+          defaultLanguage,
+          basename,
+          APIProxyURL,
+          appProxyJwt,
+        }}
+      >
+        <BrowserRouter basename={basename}>
+          <AccountApp accountNumber={accountNumber} />
+          <DebugApp props={props} />
+        </BrowserRouter>
+      </CoreProvider>
+    );
   };
 })(window.krakensupport);

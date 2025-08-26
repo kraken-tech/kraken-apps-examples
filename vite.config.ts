@@ -8,11 +8,14 @@ export default defineConfig(({ mode }) => {
   const cors = mode === "development";
 
   // To simplify the workflow when working locally, make the output file names static.
-  const entryFilenames = mode === "development" ? {
-    entryFileNames: "assets/localdev_app.js",
-    chunkFileNames: "assets/localdev_app.js",
-    assetFileNames: "assets/localdev_app.[ext]",
-  } : {};
+  const entryFilenames =
+    mode === "development"
+      ? {
+          entryFileNames: "assets/localdev_app.js",
+          chunkFileNames: "assets/localdev_app.js",
+          assetFileNames: "assets/localdev_app.[ext]",
+        }
+      : {};
 
   return {
     plugins: [react()],
@@ -31,6 +34,6 @@ export default defineConfig(({ mode }) => {
       assetsInlineLimit: 100000000,
       // Prevent CSS splitting.
       cssCodeSplit: false,
-    }
+    },
   };
 });

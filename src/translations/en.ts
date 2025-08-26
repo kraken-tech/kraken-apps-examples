@@ -11,7 +11,7 @@ export default {
   "account-links.loyalty-scheme.title": "Loyalty points awards",
   "account-links.loyalty-scheme.page-title": "Loyalty points awards for ",
   "account-links.loyalty-scheme.cta": "See points for account",
-    "account-links.special-offers.title": "Special offers",
+  "account-links.special-offers.title": "Special offers",
   "account-links.special-offers.page-title": "Special offers for ",
   "account-links.special-offers.cta": "See special offers",
   "account-app.loyalty-scheme.labels.submitted-at": "Submitted at",

@@ -35,7 +35,7 @@ export type AppConfig = {
    * The base url that the app is hosted on
    * */
   basename: string;
-    /*
+  /*
    * The base route for links to start with - this is different to the basename because we host apps in iframes
    * */
   linkBaseRoute: string;

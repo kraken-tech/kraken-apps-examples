@@ -22,19 +22,13 @@ export const AccountLinks = ({
       </Card>
       <Card>
         <CardHeader cardTitle={t("account-links.special-offers.title")} />
-        <a
-          href={`${linkRoute}accounts/${accountNumber}/special-offers/`}
-        >
+        <a href={`${linkRoute}accounts/${accountNumber}/special-offers/`}>
           {t("account-links.special-offers.cta")}
         </a>
       </Card>
       <Card>
         <CardHeader cardTitle="Logging" />
-        <a
-          href={`${linkRoute}accounts/${accountNumber}/logging/`}
-        >
-          Logging
-        </a>
+        <a href={`${linkRoute}accounts/${accountNumber}/logging/`}>Logging</a>
       </Card>
     </Stack>
   );

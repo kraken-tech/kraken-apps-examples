@@ -25,8 +25,7 @@ export const BaseRoutes = () => (
         <Route path="loyalty-scheme">
           <Route path="awards" element={<Awards />} />
         </Route>
-        <Route path="special-offers" element={<SpecialOffers />}>
-        </Route>
+        <Route path="special-offers" element={<SpecialOffers />}></Route>
         <Route path="logging" element={<LoggingPage />}></Route>
       </Route>
     </Route>
