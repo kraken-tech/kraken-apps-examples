@@ -117,7 +117,7 @@ set to only `connect-src` via the Kraken App Proxy.
 To make requests via this proxy you must include some additional
 headers in your requests:
 
-- X-Kraken-App-Proxy-Destination: The destination URL you want to connect to.
+- X-Kraken-App-Proxy-Destination: The destination host you want to connect to.
 - X-Kraken-App-Proxy-Authorization: The JWT token provided via the `init` functions (appProxyJwt)
 
 The proxy has a single endpoint which is used to forward all requests. The URL
@@ -141,7 +141,7 @@ headers:
 const response = await fetch(proxyUrl, {
   method: "POST",
   headers: {
-    "X-Kraken-App-Proxy-Destination": "external.com/api",
+    "X-Kraken-App-Proxy-Destination": "external.com",
     "X-Kraken-App-Proxy-Authorization": `Bearer ${appProxyJwt}`,
   },
   body: JSON.stringify({ data: "example" }),
